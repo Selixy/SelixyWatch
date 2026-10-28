@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="color-scheme" content="light dark">
+<script>if (window.top === window) location.replace('/#playlists'); else document.documentElement.classList.add('cadre');</script>
+<title>Playlists · SelixyWatch</title>
+<link rel="preload" href="/polices/SelixyWatchSans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/polices/SelixyWatchSans-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/police.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/surfaces.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/jauge.css">
+<link rel="stylesheet" href="/css/playlists.css">
+<link rel="stylesheet" href="/css/compte.css">
+<link rel="stylesheet" href="/css/partage.css">
+<link rel="stylesheet" href="/css/appel.css">
+<script type="module" src="/js/playlists.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="marque">
+    <button type="button" class="rond-son" id="rond-son" aria-label="Couper le son" aria-pressed="false"></button>
+    <a href="/">SelixyWatch</a>
+  </div>
+  <nav class="header-tabs" aria-label="Navigation">
+    <a class="tab" href="/">Room</a>
+    <a class="tab" href="/playlists/" aria-current="page">Playlists</a>
+  </nav>
+  <div class="header-account" id="compte"></div>
+</header>
+
+<main class="site pl">
+  <section class="appel carte" id="appel" aria-label="Connexion requise">
+    <h1>Votre bibliothèque est personnelle</h1>
+    <p>Connectez-vous ou créez un compte pour retrouver vos playlists, en recevoir et les partager.</p>
+    <a class="bouton principal" href="/#profil" target="_top">Se connecter</a>
+  </section>
+  <section class="panneau" aria-label="Dossiers et playlists">
+    <div class="outils">
+      <button type="button" class="bouton" id="nouveau-dossier" data-icone="plus">Dossier</button>
+      <button type="button" class="bouton" id="nouvelle-playlist" data-icone="plus">Playlist</button>
+      <button type="button" class="bouton" id="inviter" data-icone="inviter">Inviter</button>
+    </div>
+    <div class="arbre-zone" id="arbre"></div>
+  </section>
+
+  <section class="vue" id="vue" aria-label="Playlist" hidden>
+    <div class="ajout">
+      <form class="recherche" id="lien" role="search" novalidate>
+        <span class="recherche-icone" data-icone="recherche"></span>
+        <input type="search" id="lien-url" placeholder="Rechercher sur YouTube ou coller un lien" aria-label="Rechercher sur YouTube ou coller un lien YouTube ou Spotify" autocomplete="off" enterkeyhint="search">
+        <span class="import" id="import" hidden><i class="tourne" aria-hidden="true"></i>Import…</span>
+      </form>
+      <button type="button" class="bouton" id="vue-importer" data-icone="envoi">Importer</button>
+      <a class="mention-envoi" id="mention-envoi" hidden></a>
+      <ul class="resultats" id="resultats" hidden></ul>
+    </div>
+    <section class="panneau liste" id="liste" aria-label="Pistes"></section>
+  </section>
+
+  <div class="bas">
+    <p class="message" id="message" role="status"></p>
+    <ul class="envois" id="envois"></ul>
+  </div>
+  <input type="file" id="fichiers" multiple accept="video/*,audio/*,.mkv,.flac" hidden>
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Visuels · SelixyWatch</title>
+<link rel="icon" type="image/svg+xml" href="/visuels/favicon.svg">
+<link rel="stylesheet" href="/css/police.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<style>
+body { margin: 0; padding: 32px max(16px, 5vw) 64px; background: var(--bg-0); color: var(--text); font: 15px/1.5 var(--sans); }
+h1 { margin: 0 0 4px; font-size: 28px; color: var(--text-h); }
+h2 { margin: 44px 0 14px; font-size: 18px; color: var(--text-h); }
+.intro { margin: 0; max-width: 70ch; color: var(--text-dim); }
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.carte { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 10px; background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px; min-width: 0; }
+.vue { display: grid; place-items: center; min-height: 190px; padding: 14px; border-radius: 8px; border: 1px solid var(--border); }
+.vue img { max-width: 100%; max-height: 220px; }
+figcaption { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+figcaption strong { color: var(--text-h); }
+.meta { color: var(--text-dim); font-size: 13px; }
+code { align-self: flex-start; padding: 1px 6px; border-radius: 4px; background: var(--bg-2); font-size: 12px; }
+figcaption p { margin: 2px 0 0; font-size: 14px; }
+.onglets { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; margin-top: 14px; }
+.onglets div { padding: 8px; border-radius: 6px; background: var(--bg-1); border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<h1>Visuels</h1>
+<p class="intro">Tout ce qui est dessiné pour SelixyWatch : ce que le site utilise, les sources, et les essais. Les fichiers de ce dossier sont servis tels quels sous <code>/visuels/</code>. Quand tu en ajoutes un, ajoute-le ici et dans le <code>README.md</code>.</p>
+<h2>Le favicon à la taille d’un onglet</h2>
+<div class="onglets"><div><img src="favicon.svg" width="16" height="16" alt="16 px"></div><div><img src="favicon.svg" width="32" height="32" alt="32 px"></div><div><img src="favicon-coupe.svg" width="16" height="16" alt="16 px, son coupé"></div><div><img src="favicon-coupe.svg" width="32" height="32" alt="32 px, son coupé"></div></div>
+<h2>Utilisés par le site</h2><div class="grille"><figure class="carte"><div class="vue" style="background:var(--bg-1)"><img src="favicon.svg" alt="Icône de l’onglet"></div><figcaption><strong>Icône de l’onglet</strong><span class="meta">SVG · 64 × 64 · suit le thème du navigateur · 6.8 ko</span><code>favicon.svg</code><p>Repli et première image avant le script (js/marque/favicon.js) ; index.html.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:var(--bg-1)"><img src="favicon-coupe.svg" alt="Icône de l’onglet, son coupé"></div><figcaption><strong>Icône de l’onglet, son coupé</strong><span class="meta">SVG · 64 × 64 · lame rouge · 6.7 ko</span><code>favicon-coupe.svg</code><p>Repli quand le dessin à la volée échoue (js/marque/favicon.js).</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#16161c"><img src="icone-180.png" alt="Icône Apple"></div><figcaption><strong>Icône Apple</strong><span class="meta">PNG · 180 × 180 · 4.9 ko</span><code>icone-180.png</code><p>apple-touch-icon dans index.html.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#16161c"><img src="icone-192.png" alt="Icône d’application"></div><figcaption><strong>Icône d’application</strong><span class="meta">PNG · 192 × 192 · 5.2 ko</span><code>icone-192.png</code><p>Manifeste (manifest.webmanifest) et icône de l’onglet en secours.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#16161c"><img src="icone-512.png" alt="Icône d’application"></div><figcaption><strong>Icône d’application</strong><span class="meta">PNG · 512 × 512 · 14.3 ko</span><code>icone-512.png</code><p>Manifeste ; écran de lancement des applications installées.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#16161c"><img src="partage.png" alt="Image de partage"></div><figcaption><strong>Image de partage</strong><span class="meta">PNG · 1200 × 630 · 50.2 ko</span><code>partage.png</code><p>og:image et twitter:image de index.html : l’aperçu quand on colle le lien.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#16161c"><img src="preparation.svg" alt="Voile de préparation"></div><figcaption><strong>Voile de préparation</strong><span class="meta">SVG animé · boucle de 3,8 s · encre claire · 9.8 ko</span><code>preparation.svg</code><p>Sur l’image du lecteur tant que la vidéo n’est pas prête (js/lecteur/preparation.js).</p></figcaption></figure></div><h2>Sources</h2><div class="grille"><figure class="carte"><div class="vue" style="background:#16161c"><img src="logotype-sombre.svg" alt="Logotype, version sombre"></div><figcaption><strong>Logotype, version sombre</strong><span class="meta">SVG · fond transparent · encre #f3f4f6 · 14.5 ko</span><code>logotype-sombre.svg</code><p>Source pour les fonds sombres. Même dessin que js/marque/formes-texte.js.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#f6f5f9"><img src="logotype-clair.svg" alt="Logotype, version claire"></div><figcaption><strong>Logotype, version claire</strong><span class="meta">SVG · fond transparent · encre #1d1d1b · 14.5 ko</span><code>logotype-clair.svg</code><p>Source pour les fonds clairs.</p></figcaption></figure><figure class="carte"><div class="vue" style="background:#16161c"><img src="animation-logotype.svg" alt="Animation du logotype"></div><figcaption><strong>Animation du logotype</strong><span class="meta">SVG animé · boucle de 7 s · 24.2 ko</span><code>animation-logotype.svg</code><p>Cadre, S qui s’écrit, pied, lame, lettres, fondu. Pas utilisée par le site pour l’instant.</p></figcaption></figure></div><h2>Essais</h2><div class="grille"><figure class="carte"><div class="vue" style="background:#16161c"><img src="essais/curseur.svg" alt="Curseur à la place du point du « i »"></div><figcaption><strong>Curseur à la place du point du « i »</strong><span class="meta">SVG animé · boucle de 7 s · 18.7 ko</span><code>essais/curseur.svg</code><p>Le curseur descend cliquer sur la télé : la lame rouge apparaît (mute), un second clic la retire, il retourne sur le « i ».</p></figcaption></figure></div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.present .avatar,
+.present .avatar-video {
+  transform: scale(calc(1 + var(--voix, 0) * 0.28));
+  transition: width .28s cubic-bezier(.2, .9, .3, 1), height .28s cubic-bezier(.2, .9, .3, 1);
+  will-change: transform;
+}
+.present.parle .avatar,
+.present.parle .avatar-video {
+  box-shadow:
+    0 0 0 2px var(--bg-1),
+    0 0 0 calc(2px + var(--voix, 0) * 4px) var(--accent),
+    0 0 calc(var(--voix, 0) * 22px) calc(var(--voix, 0) * 6px) rgba(182, 168, 255, .55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .present .avatar,
+  .present .avatar-video { transform: none; }
+}

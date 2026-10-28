@@ -1,0 +1,71 @@
+.presents {
+  --p-taille: 44px;
+  position: relative;
+  z-index: 30;
+  list-style: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.presents[hidden] { display: none; }
+.presents .avatar {
+  width: var(--p-taille, 44px) !important;
+  height: var(--p-taille, 44px) !important;
+  font-size: calc(var(--p-taille, 44px) * .45) !important;
+  transition: width .28s cubic-bezier(.2, .9, .3, 1), height .28s cubic-bezier(.2, .9, .3, 1), box-shadow .2s ease;
+  box-shadow: 0 0 0 2px var(--bg-1), 0 4px 14px rgba(0, 0, 0, .45);
+}
+.present {
+  position: relative;
+  display: inline-flex;
+  border-radius: 50%;
+  animation: balade-1 12s ease-in-out infinite alternate;
+  cursor: pointer;
+  transition: transform .25s ease, width .28s ease, height .28s ease;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .4));
+  user-select: none;
+  -webkit-user-select: none;
+  flex-shrink: 0;
+}
+.present:hover {
+  transform: scale(1.18) !important;
+  z-index: 50;
+  filter: drop-shadow(0 8px 20px rgba(182, 168, 255, .35));
+}
+.present.moi .avatar {
+  box-shadow: 0 0 0 2px var(--bg-1), 0 0 0 4px var(--accent), 0 6px 18px rgba(182, 168, 255, .3);
+}
+.present.sort { animation: sort .3s ease-in forwards !important; }
+.presents.sans-animation .present { animation: none !important; }
+
+.present:nth-child(1) {
+  animation-name: balade-1;
+  animation-duration: 11s;
+}
+.present:nth-child(2) {
+  animation-name: balade-2;
+  animation-duration: 14s;
+  animation-delay: -3.8s;
+}
+.present:nth-child(3) {
+  animation-name: balade-3;
+  animation-duration: 12.5s;
+  animation-delay: -6.4s;
+}
+.present:nth-child(4) {
+  animation-name: balade-4;
+  animation-duration: 15s;
+  animation-delay: -8.7s;
+}
+.present:nth-child(5n) {
+  animation-name: balade-1;
+  animation-duration: 13.5s;
+  animation-delay: -5.2s;
+}
+.present:nth-child(6n) {
+  animation-name: balade-3;
+  animation-duration: 16s;
+  animation-delay: -9.8s;
+}

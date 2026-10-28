@@ -1,0 +1,80 @@
+@media (min-width: 900px) and (max-width: 1149px) {
+  .presents {
+    grid-area: presents;
+    width: 100%;
+    min-height: 90px;
+    margin: 4px auto 0;
+    padding: 10px 16px 18px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: safe center;
+    align-items: center;
+    gap: 16px 24px;
+    overflow: hidden;
+    scrollbar-width: none;
+  }
+  .presents::-webkit-scrollbar { display: none; }
+}
+
+@media (min-width: 1150px) {
+  .presents {
+    grid-area: presents;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    margin: 0;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: safe center;
+    align-items: center;
+    align-content: center;
+    gap: 16px 20px;
+    overflow: hidden;
+    scrollbar-width: none;
+  }
+  .presents::-webkit-scrollbar { display: none; }
+}
+
+@media (min-width: 900px) {
+  .salle.cinema .presents {
+    grid-area: presents;
+    margin: 0;
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px 24px;
+    padding: 6px 16px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .salle.cinema .presents {
+    height: 100%;
+    min-height: 120px;
+    align-content: center;
+  }
+}
+
+@media (max-width: 899px) {
+  .presents {
+    grid-row: 3;
+    grid-column: 1;
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px 16px;
+    padding: 4px 12px 10px;
+    margin-bottom: 4px;
+  }
+}

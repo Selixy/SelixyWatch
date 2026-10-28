@@ -1,0 +1,16 @@
+@media (max-width: 899px) {
+  .salle { --marge: 0px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; gap: 0; height: 100dvh; padding: var(--haut-entete) 0 0; box-sizing: border-box; overflow: hidden; }
+  .scene { display: contents; }
+  .ecran { grid-row: 1; }
+  .file, .chat {
+    grid-row: 2; grid-column: 1; align-self: stretch; min-height: 0; height: auto; margin: 14px 12px 8px; overflow: hidden; flex: none;
+    transform-origin: 50% 0; transition: transform .38s cubic-bezier(.2, .9, .3, 1), opacity .3s ease;
+  }
+  .salle[data-devant='file'] .chat, .salle[data-devant='chat'] .file { transform: scale(.93) translateY(-10px); opacity: .5; z-index: 1; pointer-events: none; }
+  .salle[data-devant='file'] .file, .salle[data-devant='chat'] .chat { transform: none; opacity: 1; z-index: 2; }
+  .messages { max-height: none; }
+}
+@media (max-width: 899px) and (prefers-reduced-motion: reduce) {
+  .file, .chat { transition: opacity .2s ease; }
+  .salle[data-devant='file'] .chat, .salle[data-devant='chat'] .file { transform: none; }
+}

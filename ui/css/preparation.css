@@ -1,0 +1,6 @@
+.preparation {
+  position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; background: #0a0910;
+  opacity: 0; transition: opacity .25s ease; pointer-events: none;
+}
+.preparation.visible { opacity: 1; }
+.preparation img { width: min(200px, 40%); height: auto; }

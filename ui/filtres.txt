@@ -1,0 +1,5 @@
+! Title: SelixyWatch : lecteur YouTube sans étiquettes
+! Description: retire le conteneur d'interface du lecteur YouTube intégré (titre, bouton pause central, lien, « Plus de vidéos », logo).
+! Seule la vidéo reste, et elle continue de jouer. Ne vise que youtube-nocookie.com, qui ne sert que des lecteurs intégrés.
+! Expires: 7 days
+youtube-nocookie.com###player-controls

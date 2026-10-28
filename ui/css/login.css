@@ -1,0 +1,21 @@
+.site { max-width: 88rem; margin: 0 auto; padding: calc(var(--haut-entete) + 20px) 16px 32px; }
+.site--etroit { max-width: 30rem; grid-template-columns: 1fr !important; }
+.carte { display: grid; gap: 20px; padding: 28px; border-radius: 28px; box-shadow: var(--lumiere), var(--halo-fort); }
+.login-marque { display: flex; justify-content: center; margin: 4px 0 2px; }
+.login-marque img { height: 40px; width: auto; object-fit: contain; }
+.carte h1 { font-size: 1.4rem; text-align: center; margin: 0; }
+.avatar-choix { display: flex; align-items: center; gap: 18px; padding: 14px; border-radius: var(--r-objet); background: var(--verre-2); border: 1px solid var(--verre-trait); }
+#apercu .avatar { box-shadow: 0 0 0 3px var(--verre-bord), 0 0 0 6px var(--accent-bg), 0 10px 28px -8px rgba(80, 40, 220, .55); }
+.avatar-boutons { display: flex; gap: 8px; flex-wrap: wrap; }
+.champ { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-dim); }
+.champ input {
+  min-height: 44px; padding: 0 16px; font-size: 15px; font-weight: 500; color: var(--text-h);
+  background: var(--verre-2); border: 1px solid var(--verre-trait); border-radius: var(--r-objet);
+  transition: border-color .18s ease, background .18s ease;
+}
+.champ input:focus { outline: none; border-color: var(--accent); background: var(--verre-3); }
+.actions-form { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 4px; }
+.actions-form .bouton { min-height: 40px; padding: 0 20px; }
+.deconnexion { margin-right: auto; padding: 8px 4px; font: inherit; font-size: 13px; color: var(--text-dim); background: transparent; border: 0; cursor: pointer; }
+.deconnexion:hover { color: var(--text-h); text-decoration: underline; }
+@media (max-width: 899px) { .site { padding-top: calc(var(--haut-entete) + 12px); } .carte { padding: 20px; } }

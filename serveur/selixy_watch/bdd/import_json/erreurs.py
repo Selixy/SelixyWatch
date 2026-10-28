@@ -1,0 +1,2 @@
+class ErreurImportJson(Exception):
+    pass

@@ -1,0 +1,86 @@
+:root {
+  --verre: rgba(255, 255, 255, .64);
+  --verre-2: rgba(255, 255, 255, .42);
+  --verre-3: rgba(255, 255, 255, .78);
+  --verre-bord: rgba(255, 255, 255, .85);
+  --verre-trait: rgba(91, 61, 240, .14);
+  --flou: blur(22px) saturate(1.6);
+  --lumiere: inset 0 1px 0 rgba(255, 255, 255, .9);
+  --halo: 0 10px 34px -12px rgba(70, 40, 190, .34), 0 2px 8px -2px rgba(46, 29, 94, .10);
+  --halo-fort: 0 22px 60px -20px rgba(70, 40, 190, .5), 0 4px 14px -4px rgba(46, 29, 94, .16);
+  --degrade: linear-gradient(135deg, #4a2fd8, #6b3fe0 50%, #8a3fd0);
+  --degrade-doux: linear-gradient(135deg, rgba(110, 80, 255, .20), rgba(190, 100, 240, .16));
+  --degrade-piste: linear-gradient(90deg, #9a86ff, #d58cff);
+  --r-carte: 20px;
+  --r-objet: 14px;
+  --r-petit: 10px;
+  --entete: 56px;
+  --haut-entete: calc(var(--entete) + 20px + var(--sa-t, env(safe-area-inset-top, 0px)));
+  --fond-a: rgba(124, 92, 255, .30);
+  --fond-b: rgba(222, 120, 255, .22);
+  --fond-c: rgba(80, 150, 255, .20);
+}
+@media (max-width: 899px) {
+  :root { --haut-entete: calc(var(--entete) + 16px + var(--sa-t, env(safe-area-inset-top, 0px))); }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --verre: rgba(38, 34, 60, .58);
+    --verre-2: rgba(255, 255, 255, .06);
+    --verre-3: rgba(255, 255, 255, .13);
+    --verre-bord: rgba(255, 255, 255, .15);
+    --verre-trait: rgba(255, 255, 255, .10);
+    --lumiere: inset 0 1px 0 rgba(255, 255, 255, .14);
+    --halo: 0 12px 36px -12px rgba(0, 0, 0, .7), 0 2px 8px -2px rgba(0, 0, 0, .4);
+    --halo-fort: 0 26px 70px -20px rgba(0, 0, 0, .85), 0 0 60px -30px rgba(140, 110, 255, .5);
+    --degrade: linear-gradient(135deg, #a99cff, #c3a4ff 55%, #dca6ff);
+    --degrade-doux: linear-gradient(135deg, rgba(150, 120, 255, .26), rgba(210, 120, 255, .16));
+    --fond-a: rgba(110, 80, 255, .40);
+    --fond-b: rgba(190, 80, 230, .24);
+    --fond-c: rgba(50, 110, 230, .26);
+  }
+}
+html { background-color: var(--bg-0); }
+html::before {
+  content: ''; position: fixed; inset: 0 0 auto 0; height: 100%; height: 100lvh; z-index: -1; pointer-events: none;
+  background-image:
+    radial-gradient(60rem 40rem at 8% -6%, var(--fond-a), transparent 70%),
+    radial-gradient(52rem 38rem at 100% 4%, var(--fond-b), transparent 70%),
+    radial-gradient(60rem 42rem at 55% 108%, var(--fond-c), transparent 70%);
+}
+:root.cadre { background: transparent; }
+:root.cadre::before { display: none; }
+.verre, .carte, .panneau, .header, .file, .chat, .menu-emoji, .resultats {
+  background: var(--verre);
+  -webkit-backdrop-filter: var(--flou); backdrop-filter: var(--flou);
+  border: 1px solid var(--verre-bord);
+  box-shadow: var(--lumiere), var(--halo);
+}
+.carte, .panneau, .file, .chat { border-radius: var(--r-carte); }
+.bouton {
+  min-height: 35px; padding: 0 14px; border-radius: 999px; color: var(--text-h); font-weight: 500;
+  background: var(--verre-2); border: 1px solid var(--verre-trait);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+.bouton:hover { background: var(--verre-3); border-color: var(--border-fort); transform: translateY(-0.5px); }
+.bouton:active { transform: none; }
+.bouton.principal {
+  color: var(--text-h); font-weight: 600; background: var(--degrade-doux); border-color: var(--border-fort);
+  box-shadow: var(--lumiere);
+}
+.bouton.principal:hover { background: var(--verre-3); border-color: var(--accent); }
+.bouton:focus-visible, .rond:focus-visible, .mini:focus-visible, .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.avatar { box-shadow: 0 0 0 2px var(--verre-bord); background: var(--bg-2); }
+.avatar--lettre {
+  color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+  background: linear-gradient(135deg, hsl(var(--h, 250) 62% 58%), hsl(calc(var(--h, 250) + 40) 55% 40%));
+}
+.message { padding: 8px 12px; border-radius: var(--r-petit); background: var(--verre-2); }
+.message:empty { padding: 0; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --verre: var(--bg-1); --verre-2: var(--bg-2); --verre-3: var(--bg-3); --verre-bord: var(--border-fort); }
+}

@@ -1,0 +1,5 @@
+.site--centre { min-height: 100vh; display: grid; align-content: center; padding-top: 32px; }
+#invitation .message { text-align: center; font-size: 15px; color: var(--text-h); }
+#invitation .message.erreur { color: var(--text-dim); }
+#invitation .actions-form { justify-content: center; }
+#invitation .actions-form .bouton { display: inline-flex; align-items: center; text-decoration: none; }

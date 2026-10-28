@@ -1,0 +1,55 @@
+.header {
+  position: fixed; top: calc(10px + var(--sa-t, env(safe-area-inset-top, 0px)));
+  left: var(--sa-l, env(safe-area-inset-left, 0px)); right: var(--sa-r, env(safe-area-inset-right, 0px));
+  z-index: 20;
+  display: flex; align-items: center; gap: 12px; min-height: var(--entete);
+  max-width: 1200px; width: calc(100% - 32px);
+  margin: 0 auto; padding: 0 12px 0 16px; border-radius: 999px;
+  box-sizing: border-box;
+}
+:root { --marque-taille: 30px; }
+.marque { display: inline-flex; align-items: center; margin-right: 8px; }
+.marque a { display: flex; align-items: center; margin-left: calc(var(--marque-taille) * -0.09375); text-decoration: none; color: var(--text-h); }
+.marque a svg { display: block; }
+.rond-son {
+  position: relative; display: grid; place-items: center; width: var(--marque-taille); height: var(--marque-taille); padding: 0; border: 0; border-radius: 8px; flex: none; cursor: pointer;
+  color: var(--text-h); background: none;
+  transition: transform .18s cubic-bezier(0.16, 1, 0.3, 1), filter .18s ease;
+}
+.rond-son::after { content: ''; position: absolute; inset: -4px; }
+.rond-son:hover { transform: scale(1.08); filter: drop-shadow(0 0 8px rgba(110, 80, 255, .4)); }
+.rond-son:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.header-tabs { display: flex; gap: 3px; padding: 3px; border-radius: 999px; background: var(--verre-2); border: 1px solid var(--verre-trait); }
+.header-account { margin-left: auto; display: flex; align-items: center; }
+.tab {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-width: 84px; min-height: 34px; padding: 0 14px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 500; text-decoration: none; white-space: nowrap;
+  color: var(--text); transition: color .18s ease, background .18s ease, border-color .18s ease;
+}
+.tab:hover { color: var(--text-h); background: var(--verre-3); }
+.tab[aria-current='page'] {
+  color: var(--text-h); font-weight: 600; background: var(--verre-3);
+  border: 1px solid var(--verre-bord); box-shadow: var(--lumiere);
+}
+.header-account .tab-moi {
+  min-width: 0; min-height: 36px; padding: 0 16px 0 8px; color: var(--text-h); font-weight: 600;
+  background: var(--verre-2); border: 1px solid var(--verre-trait); box-shadow: var(--lumiere);
+}
+.header-account .tab-moi:hover { background: var(--verre-3); border-color: var(--border-fort); }
+.header-account .tab-moi:not(:has(img)) { padding-left: 16px; }
+.header-account .tab-moi[aria-current='page'] {
+  color: var(--text-h); background: var(--verre-3); border-color: var(--border-fort);
+}
+.avatar-mini { width: 24px; height: 24px; flex: 0 0 auto; object-fit: cover; border-radius: 50%; box-shadow: 0 0 0 1px var(--verre-bord); }
+.cadre .header { display: none; }
+@media (max-width: 899px) {
+  .header { top: calc(8px + var(--sa-t, env(safe-area-inset-top, 0px))); width: calc(100% - 16px); margin: 0 auto; padding: 0 6px 0 10px; gap: 8px; }
+  .marque { margin-right: 0; }
+  .marque a { display: none; }
+  .header-tabs { gap: 2px; padding: 3px; }
+  .tab { min-width: 0; min-height: 33px; padding: 0 12px; font-size: 13px; }
+  .header-account .tab-moi { max-width: 32vw; padding: 0 12px 0 6px; }
+  .header-account .tab-moi:not(:has(img)) { padding-left: 12px; }
+  .header-account .tab-moi span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}

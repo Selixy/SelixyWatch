@@ -1,0 +1,154 @@
+:root { --haut-sous-ecran: 360px; }
+:root.cadre { --haut-sous-ecran: 360px; }
+
+.salle {
+  --marge: 24px; --chat-l: 360px;
+  display: grid; gap: 20px; align-items: start;
+  width: 100%; max-width: 120rem; margin: 0 auto; padding: var(--haut-entete) var(--marge) 32px;
+}
+.scene { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+@media (min-width: 900px) {
+  .salle:not(.cinema) {
+    grid-template-columns: minmax(0, calc((100dvh - var(--haut-entete) - var(--haut-sous-ecran)) * 16 / 9)) var(--chat-l);
+    justify-content: center;
+  }
+  .scene { grid-column: 1; grid-row: 1; }
+  .chat {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    position: sticky;
+    top: calc(var(--haut-entete) + 8px);
+    height: calc(100dvh - var(--haut-entete) - 26px);
+  }
+  .messages { max-height: none; }
+}
+
+@media (min-width: 900px) and (max-width: 1149px) {
+  :root { --haut-sous-ecran: 330px; }
+  .scene {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "ecran"
+      "file"
+      "presents";
+    gap: 14px;
+  }
+  .scene:has(#presents[hidden]) {
+    grid-template-areas:
+      "ecran"
+      "file";
+  }
+  .ecran { grid-area: ecran; }
+  .file {
+    grid-area: file;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1150px) {
+  :root { --haut-sous-ecran: 230px; }
+  .scene {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 560px);
+    grid-template-areas:
+      "ecran ecran"
+      "presents file";
+    gap: 14px 20px;
+    align-items: stretch;
+  }
+  .scene:has(#presents[hidden]) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "ecran"
+      "file";
+  }
+  .ecran { grid-area: ecran; }
+  .file {
+    grid-area: file;
+    justify-self: end;
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
+@media (min-width: 900px) {
+  .salle.cinema {
+    --chat-l: 380px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--chat-l);
+    grid-template-areas:
+      "ecran ecran"
+      "file chat"
+      "presents chat";
+    gap: 16px 20px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: var(--haut-entete) 20px 24px;
+    box-sizing: border-box;
+  }
+  .salle.cinema:has(#presents[hidden]) {
+    grid-template-areas:
+      "ecran ecran"
+      "file chat";
+  }
+  :root.cadre .salle.cinema { height: auto; }
+  .salle.cinema .scene { display: contents; }
+  .salle.cinema .ecran {
+    grid-area: ecran;
+    width: calc(100% + 40px);
+    margin: 0 -20px;
+    aspect-ratio: 16 / 9;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  :root.cadre .salle.cinema .ecran { max-height: none; }
+  .salle.cinema .file {
+    grid-area: file;
+    margin: 0;
+    min-height: 0;
+    max-width: none;
+  }
+  .salle.cinema .chat {
+    grid-area: chat;
+    position: relative;
+    top: auto;
+    margin: 0;
+    min-height: 220px;
+    height: 100%;
+    max-height: calc(100dvh - 60px);
+    display: flex;
+    flex-direction: column;
+  }
+  .salle.cinema .messages {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+  }
+  .salle.cinema .presents {
+    grid-area: presents;
+    margin: 0;
+    min-height: 52px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .salle.cinema {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 480px) var(--chat-l);
+    grid-template-areas:
+      "ecran ecran ecran"
+      "presents file chat";
+  }
+  .salle.cinema:has(#presents[hidden]) {
+    grid-template-columns: minmax(0, 1fr) var(--chat-l);
+    grid-template-areas:
+      "ecran ecran"
+      "file chat";
+  }
+}
+

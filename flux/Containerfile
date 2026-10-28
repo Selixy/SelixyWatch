@@ -1,0 +1,12 @@
+FROM docker.io/library/python:3.12-slim-bookworm
+ARG DENO_VERSION=2.9.7
+RUN apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates \
+    && curl -fsSL -o /tmp/deno.zip "https://github.com/denoland/deno/releases/download/v${DENO_VERSION}/deno-x86_64-unknown-linux-gnu.zip" \
+    && unzip -q /tmp/deno.zip -d /usr/local/bin && rm /tmp/deno.zip \
+    && apt-get purge -y unzip && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir -U "yt-dlp[default]"
+COPY flux.py /app/flux.py
+COPY selixy_flux /app/selixy_flux
+USER 10250:10250
+WORKDIR /app
+CMD ["python", "/app/flux.py"]

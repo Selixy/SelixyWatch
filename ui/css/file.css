@@ -1,0 +1,43 @@
+.file { display: flex; flex-direction: column; min-width: 0; width: 100%; padding: 12px 10px 10px; flex: none; }
+.file-tete { display: flex; align-items: center; gap: 4px; padding: 0 4px 8px 8px; }
+.file-tete h2 { flex: 1; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-dim); margin: 0; }
+.bascule {
+  display: inline-grid; place-items: center; width: 38px; height: 38px; padding: 0; cursor: pointer;
+  color: var(--text-dim); background: transparent; border: 1px solid transparent; border-radius: 50%;
+  transition: background .15s ease, color .15s ease;
+}
+.bascule:hover { background: var(--verre-3); color: var(--text-h); }
+.bascule[aria-pressed='true'] { color: var(--accent); background: var(--degrade-doux); border-color: var(--accent); }
+.bascule:focus-visible, .piste-file:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.file .message { margin: 0 4px 8px; }
+
+.suite { margin: 0; padding: 2px 2px 8px; list-style: none; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x proximity; }
+.suite:empty { display: none; }
+.suite li { flex: 0 0 11.5rem; min-width: 0; scroll-snap-align: start; }
+.piste-file {
+  display: flex; flex-direction: column; gap: 8px; width: 100%; padding: 6px 6px 10px; text-align: left; font: inherit; cursor: pointer;
+  color: var(--text); background: var(--verre-2); border: 1px solid var(--verre-trait); border-radius: var(--r-objet);
+  box-shadow: var(--lumiere); transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+.piste-file:hover { background: var(--verre-3); transform: translateY(-2px); border-color: var(--verre-bord); }
+.piste-file .vignette {
+  position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px;
+  color: var(--accent); background: var(--degrade-doux); border: 1px solid var(--verre-bord);
+}
+.vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.piste-file.courante { border-color: var(--accent); background: var(--degrade-doux); }
+.piste-file.courante .piste-nom { font-weight: 700; color: var(--text-h); }
+.piste-nom {
+  padding: 0 4px; font-size: 13px; line-height: 1.3; min-height: 2.6em; overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow-wrap: anywhere;
+}
+.piste-duree {
+  position: absolute; right: 6px; bottom: 6px; padding: 1px 6px; border-radius: 6px; font-size: 11px; font-variant-numeric: tabular-nums;
+  color: #fff; background: rgba(10, 8, 20, .72);
+}
+
+
+.en-lecture { display: flex; align-items: center; gap: 6px; padding: 0 4px 8px 8px; }
+.en-lecture[hidden] { display: none; }
+.titre-lu { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; color: var(--text-h); }
+.temps-lu { margin-right: 4px; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--text-dim); }

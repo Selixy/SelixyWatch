@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="color-scheme" content="light dark">
+<script>if (window.top === window) location.replace('/#profil'); else document.documentElement.classList.add('cadre');</script>
+<title>Login · SelixyWatch</title>
+<link rel="preload" href="/polices/SelixyWatchSans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/polices/SelixyWatchSans-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/police.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/surfaces.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/jauge.css">
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/compte.css">
+<script type="module" src="/js/login.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="marque">
+    <button type="button" class="rond-son" id="rond-son" aria-label="Couper le son" aria-pressed="false"></button>
+    <a href="/">SelixyWatch</a>
+  </div>
+  <nav class="header-tabs" aria-label="Navigation">
+    <a class="tab" href="/">Room</a>
+    <a class="tab" href="/playlists/">Playlists</a>
+  </nav>
+  <div class="header-account" id="compte"></div>
+</header>
+
+<main class="site site--etroit">
+  <form class="carte" id="auth" novalidate hidden>
+    <picture class="login-marque" aria-hidden="true">
+      <source srcset="/visuels/logotype-sombre.svg" media="(prefers-color-scheme: dark)">
+      <img src="/visuels/logotype-clair.svg" alt="SelixyWatch" width="200" height="54">
+    </picture>
+    <div class="modes" role="group" aria-label="Mode">
+      <button type="button" class="mode" data-mode="connexion" aria-pressed="true">Connexion</button>
+      <button type="button" class="mode" data-mode="inscription" aria-pressed="false">Inscription</button>
+    </div>
+    <label class="champ">
+      <span>Pseudo</span>
+      <input id="pseudo-auth" name="pseudo" minlength="2" maxlength="24" autocomplete="username" required>
+    </label>
+    <label class="champ">
+      <span>Mot de passe</span>
+      <input id="mdp" name="mdp" type="password" minlength="8" maxlength="128" autocomplete="current-password" required>
+    </label>
+    <label class="champ" id="confirmation-champ" hidden>
+      <span>Confirmation du mot de passe</span>
+      <input id="confirmation" name="confirmation" type="password" maxlength="128" autocomplete="new-password">
+    </label>
+    <p class="message" id="message-auth" role="status"></p>
+    <button type="button" class="lien-discret" id="lien-oubli">Mot de passe oublié ?</button>
+    <div class="actions-form">
+      <button type="button" class="bouton" id="entrer-anonyme">Entrer en anonyme</button>
+      <button type="submit" class="bouton principal" id="valider-auth">Se connecter</button>
+    </div>
+  </form>
+
+  <form class="carte" id="oubli" novalidate hidden>
+    <h2>Mot de passe oublié</h2>
+    <p class="aide">Indiquez votre pseudo ou votre adresse e-mail : si l'adresse du compte est validée, un lien de récupération vous est envoyé.</p>
+    <label class="champ"><span>Pseudo ou adresse e-mail</span><input id="oubli-identifiant" autocomplete="username" maxlength="254"></label>
+    <p class="message" id="message-oubli" role="status"></p>
+    <div class="actions-form">
+      <button type="button" class="bouton" id="oubli-retour">Retour</button>
+      <button type="submit" class="bouton principal">Envoyer le lien</button>
+    </div>
+  </form>
+
+  <form class="carte" id="profil" novalidate data-connecte hidden>
+    <picture class="login-marque" aria-hidden="true">
+      <source srcset="/visuels/logotype-sombre.svg" media="(prefers-color-scheme: dark)">
+      <img src="/visuels/logotype-clair.svg" alt="SelixyWatch" width="200" height="54">
+    </picture>
+    <h1 id="titre-page">Profil</h1>
+    <p class="message bandeau" id="bandeau-anonyme" role="note" hidden></p>
+
+    <div class="avatar-choix" id="avatar-choix">
+      <span id="apercu"></span>
+      <div class="avatar-boutons">
+        <button type="button" class="bouton" id="choisir-avatar">Choisir une image</button>
+        <button type="button" class="bouton" id="retirer-avatar" hidden>Retirer</button>
+        <input type="file" id="fichier-avatar" accept="image/*" hidden>
+      </div>
+    </div>
+
+    <label class="champ">
+      <span>Pseudo</span>
+      <input id="pseudo" name="pseudo" minlength="2" maxlength="24" autocomplete="nickname" required>
+    </label>
+
+    <div class="quota" id="quota" hidden>
+      <span id="quota-texte"></span>
+      <span class="quota-jauge"><span id="quota-barre"></span></span>
+    </div>
+
+    <p class="message" id="message" role="status"></p>
+    <div class="actions-form">
+      <button type="button" class="deconnexion" id="deconnexion">Déconnexion</button>
+      <button type="submit" class="bouton principal" id="enregistrer">Enregistrer</button>
+    </div>
+  </form>
+
+  <section class="carte" id="carte-offre" data-connecte hidden>
+    <h2 id="offre-titre">Offre</h2>
+    <p class="aide" id="offre-note" hidden></p>
+  </section>
+
+  <form class="carte" id="form-email" novalidate data-connecte data-permanent hidden>
+    <h2>Adresse e-mail</h2>
+    <p class="aide" id="email-etat"></p>
+    <label class="champ"><span>Adresse e-mail</span><input id="email-adresse" type="email" maxlength="254" autocomplete="email"></label>
+    <label class="champ"><span>Mot de passe, pour confirmer</span><input id="mdp-email" type="password" maxlength="128" autocomplete="current-password"></label>
+    <p class="message" id="message-email" role="status"></p>
+    <div class="actions-form">
+      <button type="button" class="bouton" id="email-retirer" hidden>Retirer</button>
+      <button type="button" class="bouton" id="email-renvoyer" hidden>Renvoyer le lien</button>
+      <button type="submit" class="bouton principal">Enregistrer l'adresse</button>
+    </div>
+  </form>
+
+  <form class="carte" id="form-mdp" novalidate data-connecte data-permanent hidden>
+    <h2>Mot de passe</h2>
+    <label class="champ"><span>Mot de passe actuel</span><input id="mdp-ancien" type="password" maxlength="128" autocomplete="current-password"></label>
+    <label class="champ"><span>Nouveau mot de passe (8 caractères minimum)</span><input id="mdp-nouveau" type="password" maxlength="128" autocomplete="new-password"></label>
+    <label class="champ"><span>Confirmation</span><input id="mdp-confirmation" type="password" maxlength="128" autocomplete="new-password"></label>
+    <p class="message" id="message-mdp" role="status"></p>
+    <div class="actions-form"><button type="submit" class="bouton principal">Changer le mot de passe</button></div>
+  </form>
+
+  <section class="carte" id="carte-sessions" data-connecte data-permanent hidden>
+    <h2>Appareils connectés</h2>
+    <ul class="sessions" id="liste-sessions"></ul>
+    <p class="message" id="message-sessions" role="status"></p>
+    <div class="actions-form"><button type="button" class="bouton" id="deconnexion-partout">Se déconnecter partout</button></div>
+  </section>
+
+  <section class="carte" id="carte-suppression" data-connecte hidden>
+    <h2>Supprimer mon compte</h2>
+    <p class="aide">Le compte, ses dossiers, ses playlists et ses fichiers sont effacés définitivement.</p>
+    <form id="form-suppression" novalidate hidden>
+      <label class="champ"><span>Mot de passe, pour confirmer</span><input id="mdp-suppression" type="password" maxlength="128" autocomplete="current-password"></label>
+      <p class="message" id="message-suppression" role="status"></p>
+      <div class="actions-form">
+        <button type="button" class="bouton" id="annuler-suppression">Annuler</button>
+        <button type="submit" class="bouton danger">Supprimer définitivement</button>
+      </div>
+    </form>
+    <div class="actions-form"><button type="button" class="bouton danger" id="demander-suppression">Supprimer mon compte</button></div>
+  </section>
+</main>
+</body>
+</html>

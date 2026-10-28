@@ -1,0 +1,9 @@
+.appel {
+  display: none; justify-items: start; gap: 12px; max-width: 32rem; margin: 0 auto; padding: 24px;
+}
+.appel p { margin: 0; color: var(--text-dim); }
+.site.pl.anonyme > :not(#appel) { display: none; }
+.site.pl.anonyme > #appel { display: grid; grid-column: 1 / -1; }
+.sans-acces { display: grid; place-items: center; min-height: 100dvh; padding: calc(var(--haut-entete, 76px) + 16px) 16px 16px; }
+.sans-acces[hidden] { display: none; }
+.sans-acces .appel { display: grid; }

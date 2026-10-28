@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="color-scheme" content="light dark">
+<script>if (window.top === window) location.replace('/#room'); else document.documentElement.classList.add('cadre');</script>
+<title>SelixyWatch</title>
+<link rel="preload" href="/polices/SelixyWatchSans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/polices/SelixyWatchSans-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/police.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/surfaces.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/jauge.css">
+<link rel="stylesheet" href="/css/salle.css">
+<link rel="stylesheet" href="/css/ecran.css">
+<link rel="stylesheet" href="/css/preparation.css">
+<link rel="stylesheet" href="/css/commandes.css">
+<link rel="stylesheet" href="/css/reactions.css">
+<link rel="stylesheet" href="/css/presence-base.css">
+<link rel="stylesheet" href="/css/presence-video.css">
+<link rel="stylesheet" href="/css/presence-menu.css">
+<link rel="stylesheet" href="/css/presence-animations.css">
+<link rel="stylesheet" href="/css/presence-disposition.css">
+<link rel="stylesheet" href="/css/presence-voix.css">
+<link rel="stylesheet" href="/css/file.css">
+<link rel="stylesheet" href="/css/chat.css">
+<link rel="stylesheet" href="/css/notifications.css">
+<link rel="stylesheet" href="/css/telephone.css">
+<link rel="stylesheet" href="/css/plein.css">
+<link rel="stylesheet" href="/css/appel.css">
+<script type="module" src="/js/main.js"></script>
+</head>
+<body>
+<header class="header">
+  <div class="marque">
+    <button type="button" class="rond-son" id="rond-son" aria-label="Couper le son" aria-pressed="false"></button>
+    <a href="/">SelixyWatch</a>
+  </div>
+  <nav class="header-tabs" aria-label="Navigation">
+    <a class="tab" href="/" aria-current="page">Room</a>
+    <a class="tab" href="/playlists/">Playlists</a>
+  </nav>
+  <div class="header-account" id="compte"></div>
+</header>
+<section class="sans-acces" id="sans-acces" hidden>
+  <div class="appel carte" role="alert">
+    <h1></h1>
+    <p></p>
+    <a class="bouton principal" href="/#playlists" target="_top"></a>
+  </div>
+</section>
+<main class="salle" id="salle">
+  <div class="scene">
+  <section class="ecran vide" id="ecran" aria-label="Lecteur">
+    <video id="video" preload="auto" playsinline></video>
+    <audio id="audio" preload="auto"></audio>
+    <div id="yt"><div id="yt-hote"></div></div>
+    <img class="poster" id="poster" alt="">
+    <div class="calque" id="calque"></div>
+    <div class="haut" id="haut"><span id="haut-titre"></span></div>
+    <div class="flotte" id="flotte" aria-hidden="true"></div>
+    <p class="ecran-nom" id="ecran-nom"></p>
+    <button type="button" class="grand-lire cache" id="grand-lire" aria-label="Lecture"></button>
+    <div class="indic" id="indic" aria-hidden="true"></div>
+    <div class="notifs" id="notifs" aria-live="polite"></div>
+    <div class="commandes" id="commandes">
+      <div class="barre" id="barre" role="slider" aria-label="Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="piste"><i id="barre-i"></i></div></div>
+      <div class="rangee">
+        <div class="ilot">
+          <button type="button" class="rond seul-plein act-prec" aria-label="Précédent" data-icone="prev"></button>
+          <button type="button" class="rond" id="lire" aria-label="Lecture"></button>
+          <button type="button" class="rond seul-plein act-suiv" aria-label="Suivant" data-icone="next"></button>
+        </div>
+        <div class="ilot ilot-temps seul-plein"><span class="temps" id="temps"></span></div>
+        <div class="ilot">
+          <span class="volume">
+            <button type="button" class="rond" id="son" aria-label="Couper le son"></button>
+            <input type="range" id="volume" min="0" max="1" step="0.01" aria-label="Volume">
+          </span>
+        </div>
+        <span class="espace"></span>
+        <div class="ilot">
+          <button type="button" class="rond seul-plein" id="chat-plein" aria-label="Afficher le chat" aria-pressed="false" data-icone="chat"></button>
+          <button type="button" class="rond" id="cinema" aria-label="Mode studio" title="Mode studio" aria-pressed="false" data-icone="cinema"></button>
+          <button type="button" class="rond" id="plein" aria-label="Plein écran" data-icone="plein"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <ul class="presents" id="presents" aria-label="Dans la room" hidden></ul>
+  <aside class="file" aria-label="File de lecture">
+    <div class="en-lecture" id="en-lecture" hidden>
+      <span class="titre-lu" id="titre-lu"></span>
+      <span class="temps-lu" id="temps-lu"></span>
+      <button type="button" class="bascule act-prec" aria-label="Précédent" title="Précédent" data-icone="prev"></button>
+      <button type="button" class="bascule act-suiv" aria-label="Suivant" title="Suivant" data-icone="next"></button>
+    </div>
+    <div class="file-tete">
+      <h2>À suivre</h2>
+      <button type="button" class="bascule" id="boucle" aria-pressed="false" aria-label="Boucle" title="Boucle" data-icone="boucle"></button>
+      <button type="button" class="bascule" id="aleatoire" aria-pressed="false" aria-label="Aléatoire" title="Aléatoire" data-icone="aleatoire"></button>
+      <button type="button" class="bascule" id="vers-chat" aria-label="Afficher le chat" title="Chat" data-icone="chat"></button>
+    </div>
+    <p class="message" id="message" role="status"></p>
+    <ul class="suite" id="suite"></ul>
+  </aside>
+  </div>
+
+
+  <section class="chat" id="chat" aria-label="Chat de la room">
+    <div class="chat-tete">
+      <h2>Chat</h2>
+      <button type="button" class="bascule" id="notifs-bascule" aria-pressed="true" aria-label="Messages du chat sur la vidéo" title="Messages du chat sur la vidéo quand le chat est replié" data-icone="cloche"></button>
+      <button type="button" class="bascule" id="vers-file" aria-label="Afficher la file de lecture" title="File de lecture" data-icone="playlist"></button>
+      <button type="button" class="bascule" id="fermer-chat" aria-label="Replier le chat" title="Replier le chat" data-icone="retirer"></button>
+    </div>
+    <ul class="messages" id="messages"></ul>
+    <form class="chat-envoi" id="chat-envoi" autocomplete="off" hidden>
+      <span class="reagir">
+        <button type="button" class="chat-emoji" id="reagir" aria-label="Réagir" aria-haspopup="true" aria-expanded="false" data-icone="smiley"></button>
+        <div class="menu-emoji" id="menu-emoji" role="menu" aria-label="Réactions" hidden></div>
+      </span>
+      <input id="chat-texte" type="text" maxlength="500" placeholder="Écrire un message" aria-label="Message">
+      <button type="submit" class="chat-envoyer" aria-label="Envoyer" data-icone="envoyer"></button>
+    </form>
+    <a class="chat-login" id="chat-login" href="/login/" hidden>Login pour écrire</a>
+  </section>
+</main>
+</body>
+</html>

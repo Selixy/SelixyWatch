@@ -1,0 +1,16 @@
+.mot { position: relative; display: flex; align-items: center; margin-left: calc(var(--marque-taille) * -0.09375); }
+.mot a { margin-left: 0; }
+.mot a svg { transition: opacity .18s ease; }
+.jauge-son {
+  --rempli: 80%; position: absolute; inset: 0 3px 0 10px; width: calc(100% - 13px); height: 100%; margin: 0; padding: 0; opacity: 0; pointer-events: none;
+  cursor: pointer; appearance: none; background: transparent; transition: opacity .18s ease;
+}
+.mot:hover .jauge-son, .mot:has(:focus-visible) .jauge-son { opacity: 1; pointer-events: auto; }
+.mot:hover a svg, .mot:has(:focus-visible) a svg { opacity: 0; }
+.jauge-son:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.jauge-son::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--accent) var(--rempli), var(--border-fort) var(--rempli)); }
+.jauge-son::-moz-range-track { height: 4px; border-radius: 2px; background: var(--border-fort); }
+.jauge-son::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--accent); }
+.jauge-son::-webkit-slider-thumb { appearance: none; width: 13px; height: 13px; margin-top: -4.5px; border: 0; border-radius: 50%; background: var(--text-h); }
+.jauge-son::-moz-range-thumb { width: 13px; height: 13px; border: 0; border-radius: 50%; background: var(--text-h); }
+@media (max-width: 899px) { .mot { display: none; } }

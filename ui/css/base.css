@@ -1,0 +1,47 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overscroll-behavior: none; }
+body {
+  margin: 0; min-height: 100vh;
+  font: 15px/1.5 var(--sans); color: var(--text); background: transparent;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+h1, h2 { margin: 0; color: var(--text-h); line-height: 1.25; }
+h1 { font-size: 1.15rem; }
+h2 { font-size: .95rem; }
+a { color: var(--accent); }
+button, input { font: inherit; color: inherit; }
+svg { display: block; flex: none; }
+[hidden], .cache { display: none !important; }
+.site {
+  width: 100%; max-width: 88rem; margin: 0 auto; padding: calc(var(--haut-entete, 76px) + var(--space-2)) 16px calc(var(--space-4) + 48px);
+  display: grid; gap: var(--space-2); align-items: start;
+}
+@media (min-width: 900px) {
+  .site { grid-template-columns: minmax(0, 1fr) 22rem; padding: calc(var(--haut-entete, 76px) + var(--space-3)) var(--space-3) var(--space-4); }
+}
+.note { margin: 0; font-size: 13px; color: var(--text-dim); }
+.message { margin: 0; font-size: 13px; color: var(--alerte); min-height: 0; }
+.message:empty { display: none; }
+.message.ok { color: var(--accent); }
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 34px; padding: 0 12px; font-size: 14px; font-weight: 600; text-decoration: none;
+  color: var(--text-h); background: var(--bg-1); border: 1px solid var(--border-fort); border-radius: var(--radius);
+  cursor: pointer; transition: background .15s ease, border-color .15s ease;
+}
+.bouton:hover { background: var(--bg-2); }
+.bouton.principal { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
+.bouton.principal:hover { background: var(--accent-fort); border-color: var(--accent-fort); }
+.bouton:disabled { opacity: .5; cursor: default; }
+.bouton:focus-visible, .rond:focus-visible, .mini:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.avatar {
+  display: inline-flex; flex: none; width: var(--t, 24px); height: var(--t, 24px);
+  border-radius: 50%; object-fit: cover; background: var(--bg-2);
+}
+.avatar--lettre {
+  align-items: center; justify-content: center;
+  font-size: calc(var(--t, 24px) * .45); font-weight: 700; line-height: 1;
+  color: #fff; background: hsl(var(--h, 250) 45% 48%);
+}
+.tab-moi { gap: 8px; }

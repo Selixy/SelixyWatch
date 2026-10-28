@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+*.tmp
+.venv/
+node_modules/
+dist/
+target/
+
+# données et secrets : jamais dans le dépôt
+serveur/donnees/
+donnees/
+secrets/
+.env
+.env.*
+*.pem
+*.key
+cookies.txt
+cle_youtube.txt
+bdd_mdp*.txt
+mail_secret.txt
+
+# outils d'agent et sauvegardes
+.claude/
+CLAUDE.md
+sauvegardes/

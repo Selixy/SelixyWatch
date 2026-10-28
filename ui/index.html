@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="color-scheme" content="light dark">
+<title>SelixyWatch</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f5f9">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#15141c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SelixyWatch">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SelixyWatch">
+<meta property="og:title" content="SelixyWatch">
+<meta property="og:description" content="Vidéos et musique regardées ensemble, à la même seconde.">
+<meta property="og:image" content="https://watch.selixy.dev/visuels/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://watch.selixy.dev/visuels/partage.png">
+<link rel="icon" type="image/svg+xml" href="/visuels/favicon.svg">
+<link rel="icon" type="image/png" href="/visuels/icone-192.png">
+<link rel="apple-touch-icon" href="/visuels/icone-180.png">
+<link rel="preload" href="/polices/SelixyWatchSans-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/polices/SelixyWatchSans-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/police.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/surfaces.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/jauge.css">
+<link rel="stylesheet" href="/css/coque.css">
+<script type="module" src="/js/coque.js"></script>
+</head>
+<body>
+<!-- La coque : l'en-tête et trois vues (Room, Playlists, Profil), chacune dans son cadre. Un cadre n'est jamais déchargé quand on
+     change de vue : la lecture de la room continue pendant qu'on parcourt les playlists. -->
+<header class="header">
+  <div class="marque">
+    <button type="button" class="rond-son" id="rond-son" aria-label="Couper le son" aria-pressed="false"></button>
+    <a href="#room" data-vue="room" aria-label="SelixyWatch">SelixyWatch</a>
+  </div>
+  <nav class="header-tabs" aria-label="Navigation">
+    <a class="tab" href="#room" data-vue="room">Room</a>
+    <a class="tab" href="#playlists" data-vue="playlists">Playlists</a>
+  </nav>
+  <div class="header-account" id="compte"></div>
+</header>
+
+<main class="coque">
+  <iframe data-vue="room" data-src="/room/" title="Room" allow="autoplay; fullscreen; encrypted-media; picture-in-picture; clipboard-write"></iframe>
+  <iframe data-vue="playlists" data-src="/playlists/" title="Playlists" allow="clipboard-write"></iframe>
+  <iframe data-vue="profil" data-src="/login/" title="Profil"></iframe>
+</main>
+</body>
+</html>

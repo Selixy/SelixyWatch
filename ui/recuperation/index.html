@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="referrer" content="no-referrer">
+<title>Nouveau mot de passe · SelixyWatch</title>
+<link rel="stylesheet" href="/css/police.css">
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/surfaces.css">
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/compte.css">
+<link rel="stylesheet" href="/css/invitation.css">
+<script type="module" src="/js/recuperation.js"></script>
+</head>
+<body>
+<main class="site site--etroit site--centre">
+  <section class="carte" id="invitation">
+    <picture class="login-marque" aria-hidden="true">
+      <source srcset="/visuels/logotype-sombre.svg" media="(prefers-color-scheme: dark)">
+      <img src="/visuels/logotype-clair.svg" alt="SelixyWatch" width="200" height="54">
+    </picture>
+    <h1>Nouveau mot de passe</h1>
+    <form id="form-recuperation" novalidate hidden>
+      <label class="champ"><span>Nouveau mot de passe (8 caractères minimum)</span><input id="mdp-nouveau" type="password" maxlength="128" autocomplete="new-password"></label>
+      <label class="champ"><span>Confirmation</span><input id="mdp-confirmation" type="password" maxlength="128" autocomplete="new-password"></label>
+      <div class="actions-form"><button type="submit" class="bouton principal">Changer le mot de passe</button></div>
+    </form>
+    <p class="message" id="message" role="status"></p>
+    <div class="actions-form">
+      <a class="bouton principal" id="entrer" href="/" hidden>Entrer dans le site</a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

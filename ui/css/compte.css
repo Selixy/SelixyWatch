@@ -1,0 +1,23 @@
+.site--etroit { display: grid; gap: 20px; }
+.carte h2 { font-size: 1.05rem; margin: 0; }
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 999px; background: var(--verre-2); border: 1px solid var(--verre-trait); }
+.mode { min-height: 36px; font: inherit; font-weight: 600; color: var(--text-dim); background: transparent; border: 0; border-radius: 999px; cursor: pointer; }
+.mode[aria-pressed="true"] { color: var(--text-h); background: var(--degrade-doux); box-shadow: var(--lumiere); }
+.mode:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.aide { margin: 0; font-size: 13px; color: var(--text-dim); }
+.quota { display: grid; gap: 6px; font-size: 13px; color: var(--text-dim); }
+.quota-jauge { display: block; height: 6px; border-radius: 999px; background: var(--verre-2); overflow: hidden; }
+.quota-jauge > span { display: block; height: 100%; width: 0; background: var(--accent); border-radius: inherit; }
+.sessions { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.session { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-radius: var(--r-objet); background: var(--verre-2); border: 1px solid var(--verre-trait); }
+.session-infos { display: grid; gap: 2px; min-width: 0; }
+.session-infos small { color: var(--text-dim); font-size: 12px; }
+.session-ici { font-style: normal; font-size: 12px; color: var(--accent); }
+.bouton.danger { color: var(--text-h); border-color: var(--border-fort); }
+.bouton.danger:hover { border-color: var(--accent); }
+.bandeau { text-align: center; font-weight: 600; color: var(--text-h); border: 1px solid var(--border-fort); }
+#auth .actions-form { flex-wrap: wrap; }
+.lien-discret { justify-self: start; padding: 0; font: inherit; font-size: 13px; color: var(--text-dim); background: transparent; border: 0; cursor: pointer; }
+.lien-discret:hover { color: var(--text-h); text-decoration: underline; }
+.mention-envoi { font-size: 13px; color: var(--text-dim); text-decoration: none; white-space: nowrap; }
+a.mention-envoi:hover { color: var(--text-h); text-decoration: underline; }
